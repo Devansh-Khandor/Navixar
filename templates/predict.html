@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laptop Resale Value Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Laptop Resale Value Predictor</h1>
+    <form action="/predict" method="post">
+
+        <!-- Company -->
+        <label for="company">Brand:</label>
+        <select id="company" name="company" required>
+            {% for brand in brands %}
+                <option value="{{ brand }}">{{ brand }}</option>
+            {% endfor %}
+        </select><br><br>
+
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            {% for type in types %}
+                <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- RAM -->
+        <label for="ram">RAM (GB):</label>
+        <!-- <input type="number" id="ram" name="ram" required><br><br> -->
+        <select id="ram" name="ram" required>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="16">16</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="64">64</option>
+        </select><br><br>
+        
+
+        <!-- Weight -->
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.01" min="1" max="50" required><br><br>
+
+
+        <!-- Touchscreen -->
+        <label for="touchscreen">Touchscreen:</label>
+        <input type="radio" id="touchscreen_yes" name="touchscreen" value="Yes" required>
+        <label for="touchscreen_yes">Yes</label>
+        <input type="radio" id="touchscreen_no" name="touchscreen" value="No" required>
+        <label for="touchscreen_no">No</label><br><br>
+
+        <!-- IPS -->
+        <label for="ips">IPS Display:</label>
+        <input type="radio" id="ips_yes" name="ips" value="Yes" required>
+        <label for="ips_yes">Yes</label>
+        <input type="radio" id="ips_no" name="ips" value="No" required>
+        <label for="ips_no">No</label><br><br>
+
+        <!-- Screen Size -->
+        <label for="screen_size">Screen Size (inches):</label>
+        <input type="number" id="screen_size" name="screen_size" step="0.01" min="11.3" max="50"required><br><br>
+
+        <!-- Resolution -->
+        <label for="resolution">Resolution (e.g., 1920x1080):</label>
+        <!-- <input type="text" id="resolution" name="resolution" required><br><br> -->
+        <select id="resolution" name="resolution" required>
+            <option value="1920x1080">1920x1080</option>
+            <option value="1366x768">1366x768</option>
+            <option value="1366x768">1366x768</option>
+            <option value="3840x2160">3840x2160</option>
+            <option value="3200x1800">3200x1800</option>
+            <option value="2880x1800">2880x1800</option>
+            <option value="2560x1600">2560x1600</option>
+            <option value="2560x1440">2560x1440</option>
+            <option value="2304x1440">2304x1440</option>
+        </select><br><br>
+
+
+        <!-- CPU -->
+        <label for="cpu">CPU:</label>
+        <select id="cpu" name="cpu" required>
+            {% for cpu in cpus %}
+                <option value="{{ cpu }}">{{ cpu }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- HDD -->
+        <label for="hdd">HDD (GB):</label>
+        <!-- <input type="number" id="hdd" name="hdd" required><br><br> -->
+        <select id="hdd" name="hdd" required>
+            <option value="0">0</option>
+            <option value="128">128</option>
+            <option value="256">256</option>
+            <option value="512">512</option>
+            <option value="1024">1024</option>
+
+        </select><br><br>
+
+        <!-- SSD -->
+        <label for="ssd">SSD (GB):</label>
+        <!-- <input type="number" id="ssd" name="ssd" required><br><br> -->
+        <select id="ssd" name="ssd" required>
+            <option value="0">0</option>
+            <option value="8">8</option>
+            <option value="128">128</option>
+            <option value="256">256</option>
+            <option value="512">512</option>
+            <option value="1024">1024 (1Tb)</option>
+        </select><br><br>
+
+        <!-- GPU -->
+        <label for="gpu">GPU:</label>
+        <select id="gpu" name="gpu" required>
+            {% for gpu in gpus %}
+                <option value="{{ gpu }}">{{ gpu }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- OS -->
+        <label for="os">Operating System:</label>
+        <select id="os" name="os" required>
+            {% for os in ops %}
+                <option value="{{ os }}">{{ os }}</option>
+            {% endfor %}
+        </select><br><br>
+
+
+        <!-- Age -->
+        <label for="age">Age:</label>
+        <select id="age" name="age" required>
+            <option value="0-1 year">0-1 year</option>
+            <option value="1-2 years">1-2 years</option>
+            <option value="2-3 years">2-3 years</option>
+            <option value="3+ years">3+ years</option>
+        </select><br><br>
+
+        <!-- Scratches -->
+        <label for="scratches">Scratches:</label>
+        <select id="scratches" name="scratches" required>
+            <option value="Minor">Minor</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Major">Major</option>
+        </select><br><br>
+
+        <!-- Battery Life -->
+        <label for="battery_life">Battery Life:</label>
+        <select id="battery_life" name="battery_life" required>
+            <option value="4 hours or less">4 hours or less</option>
+            <option value="4-6 hours">4-6 hours</option>
+            <option value="6+ hours">6+ hours</option>
+        </select><br><br>
+
+        <!-- Heating Issues -->
+        <label for="heating_issues">Heating Issues:</label>
+        <select id="heating_issues" name="heating_issues" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <!-- Charger -->
+        <label for="charger">Charger:</label>
+        <select id="charger" name="charger" required>
+            <option value="Original">Original</option>
+            <option value="Fake">Fake</option>
+        </select><br><br>
+
+        <!-- Repair History -->
+        <label for="repair_history">Repair History:</label>
+        <select id="repair_history" name="repair_history" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <!-- Under Warranty -->
+        <label for="under_warranty">Under Warranty:</label>
+        <select id="under_warranty" name="under_warranty" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <!-- Color Peel Off -->
+        <label for="color_peel_off">Color Peel Off:</label>
+        <select id="color_peel_off" name="color_peel_off" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <!-- Keypad Functionality -->
+        <label for="keypad_functionality">Keypad Functionality:</label>
+        <select id="keypad_functionality" name="keypad_functionality" required>
+            <option value="Working">Working</option>
+            <option value="Not working">Not working</option>
+        </select><br><br>
+
+        <!-- Broken Parts -->
+        <label for="broken_parts">Broken Parts:</label>
+        <select id="broken_parts" name="broken_parts" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <!-- RAM Size -->
+        <label for="ram_size">RAM Size:</label>
+        <select id="ram_size" name="ram_size" required>
+            <option value="8GB or more">8GB or more</option>
+            <option value="Less than 8GB">Less than 8GB</option>
+        </select><br><br>
+
+        <!-- ROM Size -->
+        <label for="rom_size">ROM Size:</label>
+        <select id="rom_size" name="rom_size" required>
+            <option value="256GB or more">256GB or more</option>
+            <option value="Less than 256GB">Less than 256GB</option>
+        </select><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
+
+
+

@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(to right, #00FFFF, #00CED1); /* Cyan gradient */
+}
+
+.navbar-nav .nav-link {
+    color: #fff; /* White text color */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff; /* White text color on hover */
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+.navbar-brand {
+    color: #fff; /* White text color for brand */
+}
