@@ -1,75 +1,71 @@
-/* General Styles */
+/* Streamlined predict page styles (teal theme, softer contrast) */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-app);
+    color: var(--color-text);
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px;
 }
 
 h1 {
-    color: #333;
+    color: #fff;
     text-align: center;
-    margin-bottom: 30px;
+    margin: 24px 0 28px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
 form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(15, 75, 68, 0.92); /* dark teal card */
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
 label {
-    font-weight: bold;
+    display: inline-block;
+    font-weight: 600;
+    color: var(--color-muted);
+    margin-bottom: 8px;
 }
 
-input[type="text"],
-input[type="number"],
-select {
+input[type="text"], input[type="number"], select {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: var(--color-text);
+}
+
+input::placeholder {
+    color: #cfe7e2;
+    opacity: 0.9;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    margin: 0 6px 0 4px;
 }
 
 button {
-    background-color: #007bff;
+    background-color: var(--color-primary);
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 22px;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Result Page Styles */
-.result-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.result-container h2 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.result-container p {
-    color: #666;
-    font-size: 18px;
-    text-align: center;
-}
+button:hover { background-color: var(--color-primary-dark); }

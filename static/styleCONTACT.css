@@ -233,7 +233,7 @@ textarea.input {
   color: #333;
 }
 
-.social-icons {
+/* .social-icons {
   display: flex;
   margin-top: 0.5rem;
 }
@@ -248,11 +248,47 @@ textarea.input {
   line-height: 35px;
   margin-right: 0.5rem;
   transition: 0.3s;
+} */
+
+/* .social-icons a svg { width: 16px; height: 16px; } */
+
+
+/* .social-icons a:hover {
+  transform: scale(1.05);
+} */
+
+/* keep the row tidy */
+.social-icons {
+  display: flex;                /* aligns the squares in a row */
+  gap: 12px;                    /* spacing between squares */
 }
 
-.social-icons a:hover {
-  transform: scale(1.05);
+/* center ANY icon (SVG or font) inside the square */
+.social-icons a {
+  display: inline-flex;         /* key change: flex-center, not line-height */
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 6px;           /* keep your look */
+  background: #1abc9c;          /* or your variable */
+  color: #fff;
+  line-height: 1;               /* reset – important for SVGs */
+  text-decoration: none;
+  transition: transform .3s ease;
 }
+
+/* size SVGs properly */
+.social-icons a svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  fill: currentColor;           /* makes them white, like before */
+}
+
+/* keep your hover effect */
+.social-icons a:hover { transform: translateY(-2px); }
+
 
 .contact-info:before {
   content: "";

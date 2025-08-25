@@ -1,0 +1,24 @@
+/* Clone of Home navbar/footer + font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Use Poppins everywhere to match Home */
+html, body { font-family: 'Poppins', sans-serif; }
+
+/* Navbar identical to Home */
+nav.navbar { background: rgba(0, 0, 0, 0.7) !important; }
+.navbar-brand { font-weight: 700; font-size: 1.5rem; color: #1abc9c !important; }
+.navbar-nav .nav-link { color: #fff !important; margin-left: 1rem; font-weight: 500; }
+.navbar-nav .nav-link.active, .navbar-nav .nav-link:hover { color: #1abc9c !important; }
+.dropdown-menu { background: rgba(0,0,0,0.9) !important; border: 1px solid rgba(255,255,255,0.1); }
+.dropdown-item { color: #fff; }
+.dropdown-item:hover { background: rgba(26,188,156,0.15); color: #1abc9c; }
+
+/* Footer identical to Home */
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  background: rgba(0,0,0,0.6);
+  font-size: 0.9rem;
+  color: #fff;
+}

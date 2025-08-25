@@ -1,0 +1,31 @@
+/* Navixar navbar/footer normalizer (match Home) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root { --nx-gap: 24px; --nx-brand: #1abc9c; }
+
+/* Ensure the navbar uses Poppins consistently */
+.navbar, .navbar * { font-family: 'Poppins', sans-serif !important; }
+
+/* Background and base look identical to Home */
+nav.navbar { 
+  background: linear-gradient(180deg, rgba(0,0,0,0.70), rgba(0,0,0,0.60)) !important; 
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Brand + links */
+.navbar-brand { font-weight: 700; font-size: 1.5rem; color: var(--nx-brand) !important; }
+.navbar-nav { margin-left: 0 !important; gap: var(--nx-gap); } /* consistent spacing between items */
+.navbar-nav .nav-link { color: #fff !important; font-weight: 600; letter-spacing: .2px; }
+.navbar-nav .nav-link.active, .navbar-nav .nav-link[aria-current="page"],
+.navbar-nav .nav-link:hover { color: var(--nx-brand) !important; }
+
+/* Right-align menu like Home (use with ms-auto in markup) */
+.navbar .navbar-nav.ms-auto { margin-left: auto !important; }
+
+/* Dropdown */
+.dropdown-menu { background: rgba(0,0,0,0.92) !important; border: 1px solid rgba(255,255,255,0.1); }
+.dropdown-item { color: #fff; }
+.dropdown-item:hover { background: rgba(26,188,156,0.15); color: var(--nx-brand); }
+
+/* Footer identical */
+footer { text-align: center; padding: 1rem; margin-top: 3rem; background: rgba(0,0,0,0.6); font-size: .9rem; color: #fff; }
