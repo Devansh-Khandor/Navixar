@@ -70,9 +70,13 @@ def predict():
         rom_size = request.form['rom_size']
 
         # Calculate PPI
-        X_res = int(resolution.split('x')[0])
-        Y_res = int(resolution.split('x')[1])
-        ppi = ((X_res*2) + (Y_res*2))*0.5/screen_size
+        # X_res = int(resolution.split('x')[0])
+        # Y_res = int(resolution.split('x')[1])
+        # ppi = ((X_res*2) + (Y_res*2))*0.5/screen_size
+        x, y = map(int, resolution.lower().split('x'))
+        ppi = np.hypot(x, y) / screen_size
+        ppi = round(ppi, 1)
+
 
         # Prepare query array
         query = np.array([company,type,ram,weight,touchscreen,ips,ppi,cpu,hdd,ssd,gpu,os])
