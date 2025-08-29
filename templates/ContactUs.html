@@ -93,15 +93,16 @@
           <span class="circle one"></span>
           <span class="circle two"></span>
 
-          <form action="index.html" autocomplete="off">
+          <!-- <form action="index.html" autocomplete="off"> -->
+          <form id="contactForm" autocomplete="off" novalidate>
             <h3 class="title">Contact us</h3>
             <div class="input-container">
-              <input type="text" name="name" placeholder="Name" class="input" />
+              <input type="text" name="name" placeholder="Name" class="input" required />
               <!-- <label for="">Username</label>
               <span>Username</span> -->
             </div>
             <div class="input-container">
-              <input type="email" name="email" placeholder="Email" class="input" />
+              <input type="email" name="email" placeholder="Email" class="input" required />
               <!-- <label for="">Email</label>
               <span>Email</span> -->
             </div>
@@ -122,8 +123,57 @@
     </div>
 
     <footer>© 2025 Navixar. All rights reserved.</footer>
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="app.js"></script>
+
+    <script>
+      const FORM_ENDPOINT = "https://formspree.io/f/xpwjqoea"; 
+    
+      const form = document.getElementById("contactForm");
+      const toastEl = document.getElementById("toast");
+    
+      function toast(msg, type = "success") {
+        toastEl.textContent = msg;
+        toastEl.className = "toast show " + type;
+        setTimeout(() => (toastEl.className = "toast"), 3500);
+      }
+    
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+    
+        const data = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          phone: form.phone.value.trim(),
+          message: form.message.value.trim(),
+        };
+    
+        // simple validation
+        if (!data.name || !data.email) {
+          toast("Name and Email are mandatory.", "error");
+          return;
+        }
+    
+        try {
+          const res = await fetch(FORM_ENDPOINT, {
+            method: "POST",
+            headers: { "Accept": "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+    
+          if (res.ok) {
+            toast("Response submitted ✅", "success");
+            form.reset();
+          } else {
+            toast("Something went wrong. Please try again.", "error");
+          }
+        } catch (err) {
+          toast("Network error. Please try again.", "error");
+        }
+      });
+    </script>
+    
   </body>
 </html>
