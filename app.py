@@ -27,6 +27,10 @@ def home():
 def aboutus_redirect():
     return redirect("https://www.devansh-khandor.in/", code=302)
 
+@app.route("/AboutDK")
+def about_dk():
+    return redirect("https://www.devansh-khandor.in/", code=302)
+
 @app.route('/AboutAK')
 def AboutUs_AK():
     return render_template('AboutUs_Kulkarni.html') 
