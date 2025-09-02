@@ -1,5 +1,6 @@
 # Import necessary libraries
 from flask import Flask, render_template, request
+from flask import redirect
 import pickle
 import numpy as np
 
@@ -22,9 +23,9 @@ ops=sorted(df['os'].unique())
 def home():
     return render_template('home.html')
 
-@app.route('/AboutDK')
-def AboutUs_DK():
-    return render_template('AboutUs_DK.html')
+@app.route("/AboutUs_DK.html")
+def aboutus_redirect():
+    return redirect("https://www.devansh-khandor.in/", code=302)
 
 @app.route('/AboutAK')
 def AboutUs_AK():
